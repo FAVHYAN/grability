@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Prueba Grability</title>
+	<!-- <title>Prueba Grability</title> -->
 	<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
@@ -22,7 +22,7 @@
 		<div class="col-sm-12">
 			<div class="row backPage">
 				<div class="col-sm-3">
-					<img src="img/MarvelLogo.png" class="imgHeader"/>
+					<!-- <img src="img/MarvelLogo.png" class="imgHeader"/> -->
 				</div>
 				<div class="col-sm-9 backContent">
 					<input type="text" class="col-sm-8" id="search" placeholder="Search Character"><span class="fontawesome-search"></span>

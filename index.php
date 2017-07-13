@@ -1,8 +1,8 @@
 <?php
 
 require_once 'header.php';
-// llegada de parametros enviados por metodo get desde sandbox.php
-// --------------------------------------------
+
+
 
 $keyPublic = 'b3113aaf033bc17284797879a577d209';
 $keyPrivate = 'efe2978ae17eeeec13ccdf560096fdeb0b46042e';
@@ -35,7 +35,7 @@ $obj = json_decode($json);
 ?>
 <div class="result"></div>
 <div class="col-ms-12 allHeros">
-<?php
+<!-- <?php
 for($i = 0;$i<$obj->data->count;$i++){
 
 ?>
@@ -75,7 +75,7 @@ for($i = 0;$i<$obj->data->count;$i++){
 
 <?php
 }
-?>
+?> -->
 </div>
 <?php
 require_once 'footer.php';

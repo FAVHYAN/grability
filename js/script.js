@@ -6,7 +6,7 @@ $(document).ready(function(){
 		console.log(search);
 		$.ajax({
 			type: 'POST',
-			url: 'getModal.php',
+			url: 'GetModal.php',
 			data: {'search': search},
 			beforeSend: function(response){
 				$('.allHeros').hide();
@@ -14,7 +14,7 @@ $(document).ready(function(){
 			}
 		})
 		.done(function(response){
-			$('#result').html(response)
+			$('.result').html(response)
 		})
 		.fail(function(){
 			alert('Hubo un error');
