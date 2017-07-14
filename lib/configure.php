@@ -8,5 +8,5 @@ $CGD['cod']['hash'] = md5($CGD['cod']['ts'].$CGD['cod']['private'].$CGD['cod']['
 //URL
 
 $CGD['cod']['url']['all'] = "https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=".$CGD['cod']['public']."&hash=".$CGD['cod']['hash'];
-$CGD['cod']['url']['name'] = "https://gateway.marvel.com:443/v1/public/characters?ts=1&name=";
+$CGD['cod']['url']['name'] = "https://gateway.marvel.com:443/v1/public/characters?ts=1&nameStartsWith=";
 ?>
