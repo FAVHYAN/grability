@@ -10,7 +10,7 @@ $(document).ready(function(){
 			data: {'search': search},
 			beforeSend: function(response){
 				$('.allHeros').hide();
-				$('.result').text(response);
+				$('.result').html(response);
 			}
 		})
 		.done(function(response){
