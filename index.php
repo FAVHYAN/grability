@@ -2,29 +2,41 @@
 
 require_once 'header.php';
 require 'lib/configure.php';
-
-
-$curl = curl_init($CGD['cod']['url']['all'] );
-curl_setopt($curl, CURLOPT_URL, $CGD['cod']['url']['all'] );
-curl_close ($curl);
-$json = file_get_contents($CGD['cod']['url']['all']);
-$obj = json_decode($json);
+$url = $CGD['cod']['url']['all'];
+require "lib/obj.php";
 
 ?>
+
+
+<div class="container-fluid">
+		<div class="col-md-10 back-content">
+				<div class="row top-title">
+					<div class="col-md-9">					
+						<img src="img/icons/characters.png" class="character-icon"/>
+						<h1>Characters</h1>
+					</div>
+					<div class="col-md-2">					
+						<select id="sort_by" class="form-control valid">
+							<option name="0">Sort By</option>
+							<option name="name">Name</option>
+							<option name="modified">Modified</option>
+						</select>
+					</div>
+				</div>
+<!-- get details of search and order by hero -->
 <div class="result"></div>
-<div class="col-ms-12 allHeros">
 <?php
-for($i = 0;$i<10;$i++){
+for($i = 0;$i<$obj->data->limit;$i++){
 
 ?>
-		<div class="contentHero">
+		<div class="contentHero allHeros">
 			<div class="col-md-7">
 				<img class="img-circle" src="<?php echo $obj->data->results[$i]->thumbnail->path.".".$obj->data->results[$i]->thumbnail->extension?>" width="200" height="200" />
 			</div>
 			<div class="col-md-5">
 				<span class="titleHero"><?php echo  $obj->data->results[$i]->name; ?></span>
 			</div>
-			<span class="col-md-5"><?php echo  substr($obj->data->results[$i]->description,100); ?>...</span>
+			<span class="col-md-5"><?php echo  substr($obj->data->results[$i]->description,0,100); ?>...</span>
 			<div class="col-md-7"></div>
 			<div class="col-md-5">
 				<input type="hidden" value="<?php echo $obj->data->results[$i]->id ?>" />
@@ -50,6 +62,16 @@ for($i = 0;$i<10;$i++){
 <?php
 }
 ?>
+
+</div>
+<div class="col-md-2">
+
+				<div class="row">
+					<div class="col-sm-12 contentFavorites">
+						<img src="img/icons/favourites.png" class="imgfavorites"/>
+						<label class="favorites">My favorites</label>
+					</div>
+				</div>
 </div>
 <?php
 require 'modal.php';

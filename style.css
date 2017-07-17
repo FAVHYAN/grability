@@ -66,13 +66,3 @@ body{
 #short_by{
 	margin-top: 20px;
 }
-.favorites{
-    font-size: 23px;
-    margin-top: 20px;
-}
-.imgfavorites{
-	margin-top: 20px;	
-}
-.contentFavorites{
-	display: flex;
-}
