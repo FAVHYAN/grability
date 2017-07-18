@@ -3,9 +3,13 @@
 
 require 'lib/configure.php';
 
-$name = $_POST['search'];
-$url = $CGD['cod']['url']['name'].$name;
+$order = $_POST['sort_by'];
 
+if($order == 'Name'){	
+$url = $CGD['cod']['url']['order-name'];
+}else if($order == 'Modified'){
+$url = $CGD['cod']['url']['order-modified'];
+}
 require "lib/obj.php";
 
 for($i = 0;$i<10;$i++){
