@@ -23,13 +23,13 @@
 			items_per_page : 10,			
 			nav_panel_id : '.page_navigation',
 			nav_info_id : '.info_text',
-			num_page_links_to_display : 20,			
+			num_page_links_to_display : 5,			
 			start_page : 0,
 			wrap_around : false,
-			nav_label_first : 'First',
-			nav_label_prev : 'Prev',
-			nav_label_next : 'Next',
-			nav_label_last : 'Last',
+			nav_label_first : '',
+			nav_label_prev : '<span class="glyphicon glyphicon-chevron-left" style="font-size: 17px!important;"></span>',
+			nav_label_next : '<span class="glyphicon glyphicon-chevron-right" style="font-size: 17px!important;"></span>',
+			nav_label_last : '',
 			nav_order : ["first", "prev", "num", "next", "last"],
 			nav_label_info : 'Showing {0}-{1} of {2} results',
             show_first_last: true,
@@ -72,8 +72,8 @@
 			// Construct the nav bar
 			var more = '<span class="ellipse more">...</span>';
 			var less = '<span class="ellipse less">...</span>';
-            var first = !options.show_first_last ? '' : '<a class="first_link '+ jquery_ui_default_class +'" href="">'+ options.nav_label_first +'</a>';
-            var last = !options.show_first_last ? '' : '<a class="last_link '+ jquery_ui_default_class +'" href="">'+ options.nav_label_last +'</a>';
+            var first = '';
+            var last = '';
 			
 			var navigation_html = "";
 			
@@ -92,13 +92,12 @@
 					navigation_html += '<a class="previous_link '+ jquery_ui_default_class +'" href="">'+ options.nav_label_prev +'</a>';
 					break;
 				case "num":
-					navigation_html += less;
+					// navigation_html += less;
 					var current_link = 0;
 					while(number_of_pages > current_link){
 						navigation_html += '<a class="page_link '+ jquery_ui_default_class +'" href="" longdesc="' + current_link +'">'+ (current_link + 1) +'</a>';
 						current_link++;
 					}
-					navigation_html += more;
 					break;
 				default:
 					break;
@@ -297,15 +296,15 @@
         /* Add the style class ".no_more" to the first/prev and last/next links to allow custom styling */
     	function tagNextPrev() {
 			if($nav_panels.children('.last').hasClass('active_page')){
-				$nav_panels.children('.next_link').add('.last_link').addClass('no_more ' + jquery_ui_disabled_class);
+				// $nav_panels.children('.next_link').add('.last_link').addClass('no_more ' + jquery_ui_disabled_class);
 			} else {
-				$nav_panels.children('.next_link').add('.last_link').removeClass('no_more ' + jquery_ui_disabled_class);
+				// $nav_panels.children('.next_link').add('.last_link').removeClass('no_more ' + jquery_ui_disabled_class);
 			}
 			
 			if($nav_panels.children('.first').hasClass('active_page')){
-				$nav_panels.children('.previous_link').add('.first_link').addClass('no_more ' + jquery_ui_disabled_class);
+				// $nav_panels.children('.previous_link').add('.first_link').addClass('no_more ' + jquery_ui_disabled_class);
 			} else {
-				$nav_panels.children('.previous_link').add('.first_link').removeClass('no_more ' + jquery_ui_disabled_class);
+				// $nav_panels.children('.previous_link').add('.first_link').removeClass('no_more ' + jquery_ui_disabled_class);
 			}
 		}
 		

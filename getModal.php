@@ -9,6 +9,19 @@ $url = $CGD['cod']['url']['name'].$name;
 require "lib/obj.php";
 
 for($i = 0;$i<10;$i++){
+
+$idComic = $obj->data->results[$i]->comics->items[0]->resourceURI;
+$comic = explode("comics/", $idComic);
+
+$idComicDos = $obj->data->results[$i]->comics->items[1]->resourceURI;
+$comicDos = explode("comics/", $idComicDos);
+
+$idComicTres = $obj->data->results[$i]->comics->items[2]->resourceURI;
+$comicTres = explode("comics/", $idComicTres);
+
+$idComicCuatro = $obj->data->results[$i]->comics->items[3]->resourceURI;
+$comicCuatro = explode("comics/", $idComicCuatro);
+
 if(!empty($obj->data->results[$i]->name) || $obj->data->results[$i]->thumbnail->path != ""){
 
 ?>
@@ -27,17 +40,21 @@ if(!empty($obj->data->results[$i]->name) || $obj->data->results[$i]->thumbnail->
 			</div>
 			<div class="col-md-12">				
 			<div class="col-md-12"><span class="subTitleHero">Related commics</span></div>
-				<div class="col-md-6">
+				<div class="col-md-6">	<a data-toggle="modal" data-id="<?php echo $comic[1] ?>" title="Add this item" class="open-AddBookDialog" href="#modalHero">
 					<?php echo $obj->data->results[$i]->comics->items[0]->name ?>
+					</a>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6">	<a data-toggle="modal" data-id="<?php echo $comicDos[1] ?>" title="Add this item" class="open-AddBookDialog" href="#modalHero">
 					<?php echo $obj->data->results[$i]->comics->items[1]->name ?>
+					</a>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6">	<a data-toggle="modal" data-id="<?php echo $comicTres[1] ?>" title="Add this item" class="open-AddBookDialog" href="#modalHero">
 					<?php echo $obj->data->results[$i]->comics->items[2]->name ?>
+					</a>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6">	<a data-toggle="modal" data-id="<?php echo $comicCuatro[1] ?>" title="Add this item" class="open-AddBookDialog" href="#modalHero">
 					<?php echo $obj->data->results[$i]->comics->items[3]->name ?>
+					</a>
 				</div>
 			</div>
 		</div>
