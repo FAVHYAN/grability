@@ -6,7 +6,7 @@ $(document).ready(function(){
 		console.log(search);
 		$.ajax({
 			type: 'POST',
-			url: 'GetModal.php',
+			url: 'modal/GetModal.php',
 			data: {'search': search},
 			beforeSend: function(response){
 				$('.alt_page_navigation').hide();
@@ -28,7 +28,7 @@ $(document).ready(function(){
 		console.log(sort_by);
 		$.ajax({
 			type: 'POST',
-			url: 'sortBy.php',
+			url: 'modal/sortBy.php',
 			data: {'sort_by': sort_by},
 			beforeSend: function(response){
 				$('.alt_page_navigation').hide();
@@ -53,23 +53,46 @@ $(document).ready(function(){
 					
 				});
 
-	// id modal
-	    $('.open-AddBookDialog').click( function () {
-		     var myBookId = $(this).data('id');
+		// detalles
+		
+	    $('.detail').click( function () {
+		     var Id = $(this).data('id');
 				$.ajax({
 					type: 'POST',
-					url: 'modalcUrl.php',
-					data: {'comic': myBookId},
+					url: 'modal/modalcUrlDetail.php',
+					data: {'hero': Id},
 					success: function(response){
-						$('.resultModal').html(response);
+						$('.resultModalDetail').html(response);
 					}
-				})
-		     $(".modal-body #bookId").val( myBookId );
+				});
 		     document.getElementById("contentFull").style.filter = "blur(7px)";
 			 document.getElementById("contentFull").style.WebkitFilter = "blur(7px)";
 		     document.getElementById("contentFullPage").style.filter = "blur(7px)";
 			 document.getElementById("contentFullPage").style.WebkitFilter = "blur(7px)";
 		});
+
+		
+
+	// id modal
+
+
+
+	    $('.open-AddBookDialog').click( function () {
+		     var myBookId = $(this).data('id');
+				$.ajax({
+					type: 'POST',
+					url: 'modal/modalcUrl.php',
+					data: {'comic': myBookId},
+					success: function(response){
+						$('.resultModal').html(response);
+					}
+				});
+		     document.getElementById("contentFull").style.filter = "blur(7px)";
+			 document.getElementById("contentFull").style.WebkitFilter = "blur(7px)";
+		     document.getElementById("contentFullPage").style.filter = "blur(7px)";
+			 document.getElementById("contentFullPage").style.WebkitFilter = "blur(7px)";
+		});
+
 	    $('.btn-default').click( function () {
 		     document.getElementById("contentFull").style.filter = "blur(0)";
 			 document.getElementById("contentFull").style.WebkitFilter = "blur(0)";
@@ -98,7 +121,7 @@ $(document).ready(function(){
 						$('.modal').modal('hide');
 			$.ajax({
 					type: 'POST',
-					url: 'addFavorite.php',
+					url: 'controller/addFavorite.php',
 					data: {'comic': id},
 					success: function(response){
 						$('.favoriteAdd').html(response);

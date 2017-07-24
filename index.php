@@ -5,23 +5,7 @@ require 'lib/configure.php';
 $url = $CGD['cod']['url']['all'];
 require "lib/obj.php";
 
-$idComic = $obj->data->results[0]->comics->items[0]->resourceURI;
-$comic = explode("comics/", $idComic);
-
-$idComicDos = $obj->data->results[0]->comics->items[1]->resourceURI;
-$comicDos = explode("comics/", $idComicDos);
-
-$idComicTres = $obj->data->results[0]->comics->items[2]->resourceURI;
-$comicTres = explode("comics/", $idComicTres);
-
-$idComicCuatro = $obj->data->results[0]->comics->items[3]->resourceURI;
-$comicCuatro = explode("comics/", $idComicCuatro);
-
-
-
 ?>
-
-
 <div class="container-fluid" id="contentFullPage">
 		<div class="col-md-10 back-content">
 				<div class="row top-title">
@@ -44,6 +28,17 @@ $comicCuatro = explode("comics/", $idComicCuatro);
 					<ul class="alt_content">
 						<?php
 							for($i = 0;$i<$obj->data->limit;$i++){
+								$idComic = $obj->data->results[$i]->comics->items[0]->resourceURI;
+								$comic = explode("comics/", $idComic);
+
+								$idComicDos = $obj->data->results[$i]->comics->items[1]->resourceURI;
+								$comicDos = explode("comics/", $idComicDos);
+
+								$idComicTres = $obj->data->results[$i]->comics->items[2]->resourceURI;
+								$comicTres = explode("comics/", $idComicTres);
+
+								$idComicCuatro = $obj->data->results[$i]->comics->items[3]->resourceURI;
+								$comicCuatro = explode("comics/", $idComicCuatro);
 							?><li><p>
 								<div class="contentHero allHeros">
 										<div class="col-md-6">
@@ -52,11 +47,11 @@ $comicCuatro = explode("comics/", $idComicCuatro);
 										<div class="col-md-6">
 											<span class="titleHero"><?php echo  $obj->data->results[$i]->name; ?></span>
 										</div>
-										<span class="col-md-6 description"><?php echo  substr($obj->data->results[$i]->description,0,100); ?>...</span>
+										<span class="col-md-6 description"><?php echo  substr($obj->data->results[$i]->description,0,100); ?></span>
 										<div class="col-md-6"></div>
 										<div class="col-md-6">
 											<input type="hidden" value="<?php echo $obj->data->results[$i]->id ?>" />
-											<a data-toggle="modal" data-id="<?php echo $obj->data->results[$i]->id ?>" title="Add this item" class="open-AddBookDialog btn btn-view" href="#modalHero">VIEW MORE</a>
+											<a data-toggle="modal" data-id="<?php echo $obj->data->results[$i]->name ?>" title="Add this item" class="detail btn btn-view" href="#modalHeroDetail">VIEW MORE</a>
 										</div>
 										<div class="col-md-12">				
 										<div class="col-md-12"><span class="subTitleHero">Related commics</span></div>
@@ -97,14 +92,29 @@ $comicCuatro = explode("comics/", $idComicCuatro);
 				</div>
 				<div>
 					<?php
+					require 'lib/myFavorites.php';
+					$c = 0;
+					for($i=0;$i<=99;$i++){
+						$num = mt_rand(1,100);
+						if(!empty($obj->data->results[$num]->images[0]) || $obj->data->results[$num]->images[0] != ''){
 
-					require 'chooseAdd.php';
 
+						if($c<3){
+						?>
+
+						<a href=""><img src="img/icons/btn-delete.png" class="deleteFavorite"/></a>
+								           		<img src="<?php echo $obj->data->results[$num]->images[0]->path.'.'.$obj->data->results[$num]->images[0]->extension ?>" width="200">
+								           		<br><br>
+								           		<label class="titleMenuSub"><?php echo $obj->data->results[$num]->title ?></label>
+						<?php
+								$c++;
+								}
+							}
+						}
 					?>
 				</div>
 		</div>
 </div>
 <?php
-require 'modal.php';
 require_once 'footer.php';
 ?>

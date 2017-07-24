@@ -1,12 +1,8 @@
 <?php
-require 'lib/configure.php';
+require '../lib/configure.php';
 $comic = $_POST['comic'];
 $url =  "http://gateway.marvel.com/v1/public/comics/".$comic."?ts=".$CGD['cod']['ts']."&apikey=".$CGD['cod']['public']."&hash=".$CGD['cod']['hash'];
-
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_URL, $url);
-$json = file_get_contents($url);
-$obj = json_decode($json);
+require '../lib/obj.php';
 
 
             echo '<div class="modal-header">

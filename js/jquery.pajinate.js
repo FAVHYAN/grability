@@ -70,10 +70,10 @@
 			var number_of_pages = Math.ceil(total_items/options.items_per_page);
 			
 			// Construct the nav bar
-			var more = '<span class="ellipse more">...</span>';
-			var less = '<span class="ellipse less">...</span>';
-            var first = '';
-            var last = '';
+			var more = '<a class="ellipse more first_link ' + jquery_ui_default_class + '"">...</a>';
+			var less = '<a class="ellipse less last_link ' + jquery_ui_default_class + '">...</a>';
+			var first = '';
+			var last = '';
 			
 			var navigation_html = "";
 			
@@ -92,12 +92,13 @@
 					navigation_html += '<a class="previous_link '+ jquery_ui_default_class +'" href="">'+ options.nav_label_prev +'</a>';
 					break;
 				case "num":
-					// navigation_html += less;
 					var current_link = 0;
+					navigation_html += less;
 					while(number_of_pages > current_link){
 						navigation_html += '<a class="page_link '+ jquery_ui_default_class +'" href="" longdesc="' + current_link +'">'+ (current_link + 1) +'</a>';
 						current_link++;
 					}
+					navigation_html += more;
 					break;
 				default:
 					break;
